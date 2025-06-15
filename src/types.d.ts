@@ -1,0 +1,13 @@
+type TForm = Partial<{
+    emailAddress?: string;
+    createPassword?: string;
+    confirmPassword?: string;
+}>
+
+type TFormFunctions = Partial<{
+    register?: UseFormRegister<TForm>
+    watch?: UseFormWatch<TForm>
+    setError?: UseFormSetError<TForm>
+    handleSubmit?: UseFormHandleSubmit<TForm, TForm>
+    errors?: FieldErrors<TForm>
+}>
