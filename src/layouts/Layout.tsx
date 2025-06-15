@@ -3,7 +3,7 @@ import { Outlet } from "react-router-dom";
 
 export default function Layout() {
 
-  const { register, watch, setError, handleSubmit, formState: { errors } } = useForm({
+  const { register, watch, setError, handleSubmit, formState: { errors }, reset } = useForm({
     defaultValues: {
       emailAddress: "",
       createPassword: "",
@@ -14,7 +14,7 @@ export default function Layout() {
 
   return (
     <div className="flex items-center p-[50px_0] justify-center min-h-[100vh] bg-[#FAFAFA]">
-      <Outlet context={{register, watch, setError, handleSubmit, errors}}/>
+      <Outlet context={{register, watch, setError, handleSubmit, errors, reset}}/>
     </div>
   )
 }

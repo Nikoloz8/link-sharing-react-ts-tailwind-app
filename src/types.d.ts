@@ -1,3 +1,5 @@
+import type { UseFormReset } from "react-hook-form";
+
 type TForm = Partial<{
     emailAddress?: string;
     createPassword?: string;
@@ -10,4 +12,5 @@ type TFormFunctions = Partial<{
     setError?: UseFormSetError<TForm>
     handleSubmit?: UseFormHandleSubmit<TForm, TForm>
     errors?: FieldErrors<TForm>
+    reset?: UseFormReset<TForm>
 }>

@@ -1,5 +1,6 @@
 import { useOutletContext } from "react-router-dom"
 import tailwind from "../../styles/tailwind"
+import type { TFormFunctions } from "../../types"
 
 export default function ConfirmPassword() {
 
