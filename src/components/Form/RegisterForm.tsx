@@ -5,23 +5,17 @@ import EmailAddress from "./EmailAddress"
 import RegisterFormBottomPart from "./RegisterFormBottomPart"
 import ConfirmPassword from "./ConfirmPassword"
 import type { TFormFunctions } from "../../types"
+import index from "../../utils"
 
 export default function RegisterForm() {
 
     const { H1, P1 } = tailwind()
     const { handleSubmit, watch, setError } = useOutletContext<TFormFunctions>()
 
-    const onSubmit = () => {
-        if (watch().createPassword !== watch().confirmPassword || watch().confirmPassword.trim() === "") {
-            setError("createPassword", { message: "Please check again" })
-        }
-        if (watch().emailAddress.trim() === "") {
-            setError("emailAddress", { message: "Can’t be empty" })
-        }
-    }
+    const { onSubmitRegister } = index({ watch, setError })
 
     return (
-        <form action="" className="bg-[#FFFFFF] flex flex-col gap-[40px] p-[40px] rounded-[12px]" onSubmit={handleSubmit(onSubmit)}>
+        <form action="" className="bg-[#FFFFFF] flex flex-col gap-[40px] p-[40px] rounded-[12px]" onSubmit={handleSubmit(onSubmitRegister)}>
             <div>
                 <h1 className={`${H1}`}>Create account</h1>
                 <h3 className={`${P1} text-[#737373]`}>Let’s get you started sharing your links!</h3>
