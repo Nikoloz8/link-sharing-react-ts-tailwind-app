@@ -12,7 +12,7 @@ export default function Login() {
     }, [])
 
     return (
-        <div className="flex flex-col gap-[50px] items-center">
+        <div className="flex flex-col gap-[50px] items-center p-[50px_0]">
             <img src="/images/logo-devlinks-large.svg" alt="" />
             <LoginForm />
         </div>

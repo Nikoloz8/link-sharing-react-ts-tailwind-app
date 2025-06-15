@@ -5,7 +5,7 @@ import index from '../../utils'
 
 export default function RegisterFormBottomPart() {
 
-    const { P2, H2, P1 } = tailwind()
+    const { P2, signUpSignInButtonStyle, P1 } = tailwind()
     const navigate = useNavigate()
     const { reset, handleSubmit, watch } = useOutletContext<TFormFunctions>()
 
@@ -20,7 +20,7 @@ export default function RegisterFormBottomPart() {
     return (
         <div className='flex flex-col gap-[24px]'>
             <p className={`${P2} text-[#737373]`}>Password must contains at least 8 characters</p>
-            <button onClick={handleSubmit(onSubmit)} className={`w-[100%] hover:bg-[#BEADFF] shadow-[0_0_32px_0_rgba(99,60,255,0.25)] p-[11px_0] text-center cursor-pointer bg-[#633CFF] rounded-[8px] ${H2} text-[#FFFFFF]`}>
+            <button onClick={handleSubmit(onSubmit)} className={`${signUpSignInButtonStyle}`}>
                 Create new account
             </button>
             <h4 className={`${P1} text-center text-[#737373] cursor-pointer`}>Already have an account? <a className="text-[#633CFF]" onClick={() => {
