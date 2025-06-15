@@ -13,6 +13,7 @@ type TFormFunctions = Partial<{
     handleSubmit?: UseFormHandleSubmit<TForm, TForm>
     errors?: FieldErrors<TForm>
     reset?: UseFormReset<TForm>
+    clearErrors: UseFormClearErrors<TForm>
 }>
 
 type TFunctions = Partial<{
