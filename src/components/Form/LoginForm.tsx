@@ -3,6 +3,7 @@ import EmailAddress from "./EmailAddress"
 import CreatePassword from "./CreatePassword"
 import LoginFormBottomPart from "./LoginFormBottomPart"
 
+
 export default function LoginForm() {
 
     const { H1, P1 } = tailwind()
@@ -18,7 +19,8 @@ export default function LoginForm() {
 
                 <EmailAddress />
 
-                <CreatePassword placeholder="Enter your password" />
+                <CreatePassword placeholder="Enter your password" validate={(value: string) =>
+                    value.trim() !== "" || "Please check again"} />
 
                 <LoginFormBottomPart />
             </div>

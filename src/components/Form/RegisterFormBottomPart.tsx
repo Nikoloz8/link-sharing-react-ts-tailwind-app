@@ -1,35 +1,21 @@
 import { useNavigate, useOutletContext } from 'react-router-dom'
 import tailwind from '../../styles/tailwind'
 import type { TFormFunctions } from '../../types'
+import index from '../../utils'
 
 export default function RegisterFormBottomPart() {
 
-
     const { P2, H2, P1 } = tailwind()
     const navigate = useNavigate()
-    const { reset, watch, errors, handleSubmit } = useOutletContext<TFormFunctions>()
+    const { reset, handleSubmit, watch } = useOutletContext<TFormFunctions>()
 
-    const registerFunction = () => {
-        const storedUsers = localStorage.getItem("99")
-
-        if (!storedUsers) return
-
-        const parsedStoredUsers = JSON.parse(storedUsers)
-        parsedStoredUsers.push({ id: Math.floor(Math.random() * 100000), ...watch() })
-        const stringedStoredUsers = JSON.stringify(parsedStoredUsers)
-        localStorage.setItem("99", stringedStoredUsers)
-
-    }
-
+    const { handleRegister } = index({ watch })
 
     const onSubmit = () => {
-        console.log("hola")
-        registerFunction()
+        handleRegister()
         reset?.()
         navigate("/login")
     }
-
-    console.log(errors)
 
     return (
         <div className='flex flex-col gap-[24px]'>

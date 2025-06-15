@@ -11,7 +11,7 @@ export default function EmailAddress() {
         <div className="flex flex-col gap-[4px]">
             <div className="flex justify-between">
                 <label htmlFor="email" className={`${P2}`}>Email address</label>
-                {errors.emailAddress ? <p className={`${P2} text-[#FF3939] elative top-[38px] right-[16px]`}>Can’t be empty</p> : undefined}
+                {errors.emailAddress ? <p className={`${P2} text-[#FF3939] relative top-[38px]! right-[16px]`}>Can’t be empty</p> : undefined}
             </div>
             <input type="text" id="email" className={`${inputStyle} bg-[url('/images/icon-email.svg')] ${errors.emailAddress ? "border-[#FF3939]" : undefined}`} {...register("emailAddress", { required: "Can’t be empty" })} placeholder="e.g. alex@email.com" />
         </div>)

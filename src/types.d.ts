@@ -19,4 +19,5 @@ type TFormFunctions = Partial<{
 type TFunctions = Partial<{
     watch?: UseFormWatch<TForm>
     setError?: UseFormSetError<TForm>
+    reset?: UseFormReset<TForm>
 }>
