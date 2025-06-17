@@ -19,15 +19,18 @@ export default function MainLayout() {
         }
     })
 
+    const [image, setImage] = useState<string | null>(null)
+
+
     return (
         <div className="flex items-center justify-center min-h-[100vh] bg-[#FAFAFA]">
             <div className="w-[100%] min-h-[100vh] p-[24px] flex flex-col gap-[24px]">
                 <Header />
                 <main className="flex gap-[24px] h-[834px]">
 
-                    <Phone platformLinks={platformLinks} allMenuList={allMenuList} watch={watch}/>
+                    <Phone platformLinks={platformLinks} image={image ? image : ""} allMenuList={allMenuList} watch={watch} />
                     <section className="w-[100%] h-[100%] pt-[40px] flex bg-[#FFFFFF] rounded-[12px] flex-col justify-between">
-                        <Outlet context={{ allMenuList, setPlatformLinks, platformLinks, register, watch }} />
+                        <Outlet context={{ image, setImage, allMenuList, setPlatformLinks, platformLinks, register, watch }} />
                         <SavePart />
                     </section>
                 </main>

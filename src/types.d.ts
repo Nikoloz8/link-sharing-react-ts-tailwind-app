@@ -58,4 +58,6 @@ type TMainOutletContext = Partial<{
         lastName: string;
         email: string;
     }>
+    setImage: React.Dispatch<React.SetStateAction<string | null>>
+    image: string
 }>
