@@ -1,11 +1,11 @@
 import { useLocation, useNavigate } from "react-router-dom"
 import tailwind from "../../styles/tailwind"
-
 export default function Header() {
 
     const { H2 } = tailwind()
     const location = useLocation()
     const navigate = useNavigate()
+
 
     return (
         <header className="flex w-[100%] bg-[#FFFFFF] p-[16px] items-center justify-between rounded-[12px]">
@@ -20,7 +20,9 @@ export default function Header() {
                     Profile Details
                 </button>
             </div>
-            <button className={`p-[11px_27px] rounded-[8px] border-[1px] border-solid border-[#633CFF] ${H2} text-[#633CFF]!`}>
+            <button onClick={() => {
+                navigate("/preview")
+            }} className={`p-[11px_27px] rounded-[8px] border-[1px] border-solid border-[#633CFF] ${H2} text-[#633CFF]! hover:bg-[#EFEBFF] cursor-pointer`}>
                 Preview
             </button>
         </header>)

@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom"
 import Header from "../components/MainLayout/Header"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Phone from "../components/MainLayout/Phone"
 import SavePart from "../components/MainLayout/SavePart"
 import { useForm } from "react-hook-form"
@@ -21,17 +21,25 @@ export default function MainLayout() {
 
     const [image, setImage] = useState<string | null>(null)
 
+    useEffect(() => {
+        const stringedAllMenuList = JSON.stringify(allMenuList)
+        localStorage.setItem("102", stringedAllMenuList)
+    }, [])
+
+    useEffect(() => {
+        const stringedPlatformLinks = JSON.stringify(platformLinks);
+        localStorage.setItem("101", stringedPlatformLinks);
+    }, [platformLinks])
 
     return (
         <div className="flex items-center justify-center min-h-[100vh] bg-[#FAFAFA]">
             <div className="w-[100%] min-h-[100vh] p-[24px] flex flex-col gap-[24px]">
                 <Header />
                 <main className="flex gap-[24px] h-[834px]">
-
                     <Phone platformLinks={platformLinks} image={image ? image : ""} allMenuList={allMenuList} watch={watch} />
                     <section className="w-[100%] h-[100%] pt-[40px] flex bg-[#FFFFFF] rounded-[12px] flex-col justify-between">
                         <Outlet context={{ image, setImage, allMenuList, setPlatformLinks, platformLinks, register, watch }} />
-                        <SavePart />
+                        <SavePart platformLinks={platformLinks} />
                     </section>
                 </main>
             </div>

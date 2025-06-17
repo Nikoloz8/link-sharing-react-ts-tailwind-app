@@ -1,6 +1,7 @@
 import { useLocation } from "react-router-dom"
 import tailwind from "../../styles/tailwind"
 import type { TMainOutletContext } from "../../types"
+import RenderPlatformLinks from "./RenderPlatformLinks"
 
 export default function Phone({ platformLinks, allMenuList, watch, image }: TMainOutletContext) {
 
@@ -8,14 +9,9 @@ export default function Phone({ platformLinks, allMenuList, watch, image }: TMai
 
     const location = useLocation()
 
-
-
     const renderMissings = () => {
-
         if (location.pathname.includes("profileDetails") && platformLinks && allMenuList) {
-
             const missingCount = 5 - platformLinks.length;
-
             return <>
                 {Array.from({ length: missingCount }).map((_e, i) => (<div key={i} className="w-full h-[50px] p-[16px] rounded-[8px] flex justify-between cursor-pointer bg-[#FFFFFF]"></div>))}
             </>
@@ -33,17 +29,7 @@ export default function Phone({ platformLinks, allMenuList, watch, image }: TMai
                     </div>
                 </div> : ""}
             <div className="flex flex-col gap-[13px] absolute left-[161px] top-[379px] w-[237px]">
-                {platformLinks?.map((e, i) => {
-                    return allMenuList ? <a key={i} href={e.link}>
-                        <button className={`w-[100%] p-[16px] rounded-[8px] flex justify-between cursor-pointer ${allMenuList[e.selected].border}`} style={{ backgroundColor: allMenuList[e.selected].bg }}>
-                            <div className={`flex gap-[8px] items-center text-[#FFFFFF] ${P2}`} style={{ color: allMenuList[e.selected].textColor }}>
-                                <img src={allMenuList[e.selected].img} alt="" />
-                                {allMenuList[e.selected].platform}
-                            </div>
-                            <img src="/images/icon-arrow-right.svg" alt="" />
-                        </button>
-                    </a> : undefined
-                })}
+                <RenderPlatformLinks platformLinks={platformLinks} allMenuList={allMenuList} />
                 {renderMissings()}
             </div>
         </section>)

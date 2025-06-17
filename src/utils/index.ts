@@ -12,8 +12,14 @@ export default function index({ watch, reset }: TFunctions) {
         const parsedStoredUsers = JSON.parse(storedUsers)
 
         for (let i = 0; i < parsedStoredUsers.length; i++) {
-            if (watch().emailAddress === parsedStoredUsers[i].emailAddress && watch().createPassword === parsedStoredUsers[i].createPassword) {
+            if (watch().emailAddress === parsedStoredUsers[i].emailAddress && watch().createPassword === parsedStoredUsers[i].password) {
                 navigate("/main/links")
+                const currentUser = {
+                    emailAddress: watch().emailAddress,
+                    password: watch().createPassword
+                }
+                const stringedCurrentUser = JSON.stringify(currentUser)
+                localStorage.setItem("100", stringedCurrentUser)
                 reset!()
             } else {
                 console.log("no match")
@@ -27,11 +33,12 @@ export default function index({ watch, reset }: TFunctions) {
         if (!storedUsers) return
 
         const parsedStoredUsers = JSON.parse(storedUsers)
-        parsedStoredUsers.push({ id: Math.floor(Math.random() * 100000), ...watch() })
+        parsedStoredUsers.push({ id: Math.floor(Math.random() * 100000), emailAddress: watch().emailAddress, password: watch().createPassword })
         const stringedStoredUsers = JSON.stringify(parsedStoredUsers)
         localStorage.setItem("99", stringedStoredUsers)
 
     }
+
 
 
     return { handleLogin, handleRegister }

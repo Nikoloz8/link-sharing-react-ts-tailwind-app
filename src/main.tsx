@@ -8,6 +8,7 @@ import Login from './pages/Login'
 import Links from './pages/Links'
 import MainLayout from './layouts/MainLayout'
 import ProfileDetails from './pages/ProfileDetails'
+import Preview from './pages/Preview'
 
 const router = createBrowserRouter([
   {
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
         path: "/login"
       }
     ]
+  },
+  {
+    element:<Preview />,
+    path: "/preview"
   }
 ])
 

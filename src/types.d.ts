@@ -20,6 +20,13 @@ type TFunctions = Partial<{
     watch?: UseFormWatch<TForm>
     setError?: UseFormSetError<TForm>
     reset?: UseFormReset<TForm>
+
+    platformLinks: {
+        selected: number;
+        link: string;
+        showDropdown: boolean;
+    }[]
+
 }>
 
 type TMainOutletContext = Partial<{
@@ -48,16 +55,19 @@ type TMainOutletContext = Partial<{
         link: string;
         showDropdown: boolean;
     }[]>>
+
     register: UseFormRegister<{
         firstName: string;
         lastName: string;
         email: string;
     }>
+
     watch: UseFormWatch<{
         firstName: string;
         lastName: string;
         email: string;
     }>
+
     setImage: React.Dispatch<React.SetStateAction<string | null>>
     image: string
 }>
