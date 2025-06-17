@@ -5,7 +5,7 @@ export default function Home() {
 
   const { H2, H1, P1, P2, inputStyle } = tailwind()
 
-  const allMenuList = [{ platform: "GitHub", img: "/images/icon-github.svg" }, { platform: "Frontend Mentor", img: "/images/icon-frontend-mentor.svg" }, { platform: "Twitter", img: "/images/icon-twitter.svg" }, { platform: "LinkedIn", img: "/images/icon-linkedin.svg" }, { platform: "YouTube", img: "/images/icon-youtube.svg" }, { platform: "Facebook", img: "/images/icon-facebook.svg" }, { platform: "Twitch", img: "/images/icon-twitch.svg" }, { platform: "Dev.to", img: "/images/icon-devto.svg" }, { platform: "Codewars", img: "/images/icon-codewars.svg" }, { platform: "Codepen", img: "/images/icon-codepen.svg" }, { platform: "freeCodeCamp", img: "/images/icon-freecodecamp.svg" }, { platform: "GitLab", img: "/images/icon-gitlab.svg" }, { platform: "Hashnode", img: "/images/icon-hashnode.svg" }, { platform: "Stack Overflow", img: "/images/icon-stack-overflow.svg" }]
+  const allMenuList = [{ platform: "GitHub", img: "/images/icon-github.svg", bg: "#1A1A1A" }, { platform: "Frontend Mentor", img: "/images/icon-frontend-mentor.svg", bg: "#FFFFFF", textColor: "#333333", border: "border-[1px] border-solid border-[#D9D9D9]" }, { platform: "Twitter", img: "/images/icon-twitter.svg", bg: "#43B7E9" }, { platform: "LinkedIn", img: "/images/icon-linkedin.svg", bg: "#2D68FF" }, { platform: "YouTube", img: "/images/icon-youtube.svg", bg: "#EE3939" }, { platform: "Facebook", img: "/images/icon-facebook.svg", bg: "#2442AC" }, { platform: "Twitch", img: "/images/icon-twitch.svg", bg: "#EE3FC8" }, { platform: "Dev.to", img: "/images/icon-devto.svg", bg: "#333333" }, { platform: "Codewars", img: "/images/icon-codewars.svg", bg: "#8A1A50" }, { platform: "Codepen", img: "/images/icon-codepen.svg", bg: "#131417" }, { platform: "freeCodeCamp", img: "/images/icon-freecodecamp.svg", bg: "#302267" }, { platform: "GitLab", img: "/images/icon-gitlab.svg", bg: "#EB4925" }, { platform: "Hashnode", img: "/images/icon-hashnode.svg", bg: "#0330D1" }, { platform: "Stack Overflow", img: "/images/icon-stack-overflow.svg", bg: "#EC7100" }]
 
   const [platformLinks, setPlatformLinks] = useState<{ selected: number, link: string, showDropdown: boolean }[]>([])
 
@@ -28,7 +28,20 @@ export default function Home() {
         </button>
       </header>
       <main className="flex gap-[24px] h-[834px]">
-        <section className="w-[560px] min-w-[560px] h-[100%] rounded-[12px] bg-[#FFFFFF] bg-[url('/images/illustration-phone-mockup.svg')] bg-no-repeat bg-center">
+        <section className="w-[560px] min-w-[560px] h-[100%] rounded-[12px] bg-[#FFFFFF] bg-[url('/images/illustration-phone-mockup.svg')] bg-no-repeat relative bg-center">
+          <div className="flex flex-col gap-[14px] absolute left-[161px] top-[379px] w-[237px]">
+            {platformLinks.map((e, i) => {
+              return <a key={i} href={e.link}>
+                <button className={`w-[100%] p-[16px] rounded-[8px] flex justify-between cursor-pointer ${allMenuList[e.selected].border}`} style={{ backgroundColor: allMenuList[e.selected].bg }}>
+                  <div className={`flex gap-[8px] items-center text-[#FFFFFF] ${P2}`} style={{ color: allMenuList[e.selected].textColor }}>
+                    <img src={allMenuList[e.selected].img} alt="" />
+                    {allMenuList[e.selected].platform}
+                  </div>
+                  <img src="/images/icon-arrow-right.svg" alt="" />
+                </button>
+              </a>
+            })}
+          </div>
         </section>
         <section className="w-[100%] h-[100%] pt-[40px] flex bg-[#FFFFFF] rounded-[12px] flex-col justify-between">
           <div className="flex flex-col gap-[40px]">
