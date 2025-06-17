@@ -21,3 +21,41 @@ type TFunctions = Partial<{
     setError?: UseFormSetError<TForm>
     reset?: UseFormReset<TForm>
 }>
+
+type TMainOutletContext = Partial<{
+    allMenuList: ({
+        platform: string;
+        img: string;
+        bg: string;
+        textColor?: undefined;
+        border?: undefined;
+    } | {
+        platform: string;
+        img: string;
+        bg: string;
+        textColor: string;
+        border: string;
+    })[]
+
+    platformLinks: {
+        selected: number;
+        link: string;
+        showDropdown: boolean;
+    }[]
+
+    setPlatformLinks: React.Dispatch<React.SetStateAction<{
+        selected: number;
+        link: string;
+        showDropdown: boolean;
+    }[]>>
+    register: UseFormRegister<{
+        firstName: string;
+        lastName: string;
+        email: string;
+    }>
+    watch: UseFormWatch<{
+        firstName: string;
+        lastName: string;
+        email: string;
+    }>
+}>

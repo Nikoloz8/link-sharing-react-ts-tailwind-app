@@ -3,13 +3,29 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Register from './pages/Register'
-import Layout from './layouts/Layout'
+import LoginRegisterLayout from './layouts/Login&RegisterLayout'
 import Login from './pages/Login'
-import Home from './pages/Home'
+import Links from './pages/Links'
+import MainLayout from './layouts/MainLayout'
+import ProfileDetails from './pages/ProfileDetails'
 
 const router = createBrowserRouter([
   {
-    element: <Layout />,
+    element: <MainLayout />,
+    path: "/main",
+    children: [
+      {
+        element: <Links />,
+        path: "/main/links"
+      },
+      {
+        element: <ProfileDetails />,
+        path: "/main/profileDetails"
+      }
+    ]
+  },
+  {
+    element: <LoginRegisterLayout />,
     path: "/",
     children: [
       {
@@ -19,10 +35,6 @@ const router = createBrowserRouter([
       {
         element: <Login />,
         path: "/login"
-      },
-      {
-        element: <Home />,
-        path: "/home"
       }
     ]
   }

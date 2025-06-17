@@ -13,7 +13,7 @@ export default function index({ watch, reset }: TFunctions) {
 
         for (let i = 0; i < parsedStoredUsers.length; i++) {
             if (watch().emailAddress === parsedStoredUsers[i].emailAddress && watch().createPassword === parsedStoredUsers[i].createPassword) {
-                navigate("/home")
+                navigate("/main/links")
                 reset!()
             } else {
                 console.log("no match")
