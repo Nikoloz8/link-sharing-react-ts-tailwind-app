@@ -7,7 +7,7 @@ export default function Header({ isTablet }: { isTablet: boolean }) {
     const navigate = useNavigate()
 
     return (
-        <header className="flex w-[100%] bg-[#FFFFFF] p-[16px] items-center justify-between rounded-[12px]">
+        <header className="flex w-[100%] relative bg-[#FFFFFF] p-[16px] items-center justify-between rounded-[12px]">
             <img src={!isTablet ? "/images/logo-devlinks-large.svg" : "/images/logo-devlinks-small.svg"} className="h-[32px]" alt="" />
             <div className="flex gap-[16px] items-center max-sm:gap-[0]">
                 <button onClick={() => navigate("/main/links")} className={`flex p-[13px_27px] rounded-[8px] ${H2} items-center gap-[8px] text-[#737373] ${location.pathname.includes("links") ? "bg-[#EFEBFF] text-[#633CFF]!" : ""} cursor-pointer`}>
@@ -25,7 +25,7 @@ export default function Header({ isTablet }: { isTablet: boolean }) {
                 <span className="max-lg:hidden">
                     Preview
                 </span>
-                <img src={isTablet? "/images/icon-preview-header.svg" : ""} alt="" />
+                <img src={isTablet ? "/images/icon-preview-header.svg" : ""} alt="" />
             </button>
         </header>)
 }

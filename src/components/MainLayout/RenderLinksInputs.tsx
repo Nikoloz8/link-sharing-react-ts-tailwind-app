@@ -14,10 +14,7 @@ export default function RenderLinksInputs() {
                 return <div key={i} className="bg-[#FAFAFA] rounded-[12px] flex flex-col gap-[12px] p-[20px]">
                     <div className="w-[100%] flex justify-between">
                         <div className="flex gap-[8px] items-center">
-                            <div className="flex flex-col gap-[4px]">
-                                <span className="w-[12px] h-[1px] bg-[#737373]"></span>
-                                <span className="w-[12px] h-[1px] bg-[#737373]"></span>
-                            </div>
+                            <img src="/images/icon-drag-and-drop.svg" alt="" />
                             <h3 className={`${H2} text-[#737373]`}>Link #{i + 1}</h3>
                         </div>
                         <button className={`${P1} text-[#737373] cursor-pointer`} onClick={() => {
