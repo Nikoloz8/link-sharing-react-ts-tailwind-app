@@ -14,7 +14,7 @@ export default function Links() {
         <div className="flex flex-col gap-[40px]">
           <div className="flex flex-col gap-[8px] p-[0_40px]!">
             <h1 className={`${H1}`}>Customize your links</h1>
-            <p className={`${P1}`}>Add/edit/remove links below and then share all your profiles with the world!</p>
+            <p className={`${P1} text-[#737373]`}>Add/edit/remove links below and then share all your profiles with the world!</p>
           </div>
           <div className="flex flex-col gap-[24px] p-[0_40px]!">
             <button onClick={() => {

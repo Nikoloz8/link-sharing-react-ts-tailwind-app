@@ -76,6 +76,7 @@ type TMainOutletContext = Partial<{
 
     setImage: React.Dispatch<React.SetStateAction<string | null>>
     image: string
+    isTablet: boolean
 }>
 
 type TUser = {

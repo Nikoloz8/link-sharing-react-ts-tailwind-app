@@ -3,7 +3,7 @@ import tailwind from "../../styles/tailwind"
 import type { TMainOutletContext } from "../../types"
 import RenderPlatformLinks from "./RenderPlatformLinks"
 
-export default function Phone({ platformLinks, allMenuList, watch, image }: TMainOutletContext) {
+export default function Phone({ platformLinks, allMenuList, watch, image, isTablet }: TMainOutletContext) {
 
     const { P2, H2 } = tailwind()
 
@@ -18,7 +18,7 @@ export default function Phone({ platformLinks, allMenuList, watch, image }: TMai
         }
     }
 
-    return (
+    return (!isTablet ?
         <section className="w-[560px] min-w-[560px] h-[100%] rounded-[12px] bg-[#FFFFFF] bg-[url('/images/illustration-phone-mockup.svg')] bg-no-repeat relative bg-center">
             {watch().email || watch().firstName || watch().lastName || image ?
                 <div className="flex flex-col gap-[25px] items-center absolute top-[164px] left-[180px] min-w-[200px]">
@@ -32,5 +32,5 @@ export default function Phone({ platformLinks, allMenuList, watch, image }: TMai
                 <RenderPlatformLinks platformLinks={platformLinks} allMenuList={allMenuList} />
                 {renderMissings()}
             </div>
-        </section>)
+        </section> : undefined)
 }

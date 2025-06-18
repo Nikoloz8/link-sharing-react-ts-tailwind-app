@@ -36,12 +36,21 @@ export default function MainLayout() {
 
     const location = useLocation()
 
+    const [isTablet, setIsTablet] = useState(false)
+
+    useEffect(() => {
+        setIsTablet(window.innerWidth < 1150)
+        const handleResize = () => setIsTablet(window.innerWidth < 1150)
+        window.addEventListener("resize", handleResize)
+        return () => window.removeEventListener("resize", handleResize)
+    }, [])
+
     return (location.pathname.includes("links") || location.pathname.includes("profileDetails") ?
         <div className="flex items-center justify-center min-h-[100vh] bg-[#FAFAFA]">
             <div className="w-[100%] min-h-[100vh] p-[24px] flex flex-col gap-[24px]">
-                <Header />
+                <Header isTablet={isTablet} />
                 <main className="flex gap-[24px] h-[834px]">
-                    <Phone platformLinks={platformLinks} image={image ? image : ""} allMenuList={allMenuList} watch={watch} />
+                    <Phone isTablet={isTablet} platformLinks={platformLinks} image={image ? image : ""} allMenuList={allMenuList} watch={watch} />
                     <section className="w-[100%] h-[100%] pt-[40px] flex bg-[#FFFFFF] rounded-[12px] flex-col justify-between">
                         <Outlet context={{ image, setImage, allMenuList, setPlatformLinks, platformLinks, register, watch }} />
                         <SavePart image={image ? image : ""} platformLinks={platformLinks} watch={watch} />
