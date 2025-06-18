@@ -1,9 +1,10 @@
 import type { TMainOutletContext } from "../../types"
 import tailwind from "../../styles/tailwind"
 
-export default function RenderPlatformLinks({ platformLinks, allMenuList }: TMainOutletContext) {
+export default function RenderPlatformLinks({ allMenuList, platformLinks }: TMainOutletContext) {
 
     const { P2 } = tailwind()
+
 
     return platformLinks?.map((e, i) => {
         return allMenuList ? <a key={i} href={e.link}>

@@ -1,16 +1,16 @@
 import { useOutletContext } from 'react-router-dom'
-import type { TMainOutletContext } from '../../types'
+import type { TMainOutletContext, TPlatformLink } from '../../types'
 import tailwind from '../../styles/tailwind'
 
 export default function RenderLinksInputs() {
 
-    const { platformLinks, setPlatformLinks, allMenuList } = useOutletContext<TMainOutletContext>()
+    const { setPlatformLinks, allMenuList, platformLinks } = useOutletContext<TMainOutletContext>()
 
     const { H2, P1, P2, H1, inputStyle } = tailwind()
 
     if (platformLinks && setPlatformLinks && allMenuList) {
         return (platformLinks.length !== 0 ? <div className="flex flex-col gap-[24px] overflow-y-scroll h-[510px] pb-[24px]">
-            {platformLinks.map((e, i) => {
+            {platformLinks.map((e: TPlatformLink, i: number) => {
                 return <div key={i} className="bg-[#FAFAFA] rounded-[12px] flex flex-col gap-[12px] p-[20px]">
                     <div className="w-[100%] flex justify-between">
                         <div className="flex gap-[8px] items-center">
@@ -21,14 +21,14 @@ export default function RenderLinksInputs() {
                             <h3 className={`${H2} text-[#737373]`}>Link #{i + 1}</h3>
                         </div>
                         <button className={`${P1} text-[#737373] cursor-pointer`} onClick={() => {
-                            setPlatformLinks(platformLinks.filter((_e, index) => i !== index))
+                            setPlatformLinks(platformLinks.filter((_e: TPlatformLink, index: number) => i !== index))
                         }}>Remove</button>
                     </div>
                     <div className="flex flex-col gap-[4px]">
                         <label className={`${P2}`}>Platform</label>
                         <div onClick={() => {
                             setPlatformLinks(prevLinks => prevLinks.map((link, index) => index === i ? { ...link, showDropdown: !link.showDropdown } : link))
-                        }} className={`flex w-[100%] bg-[#FFFFFF] justify-between p-[12px_16px] rounded-[8px] border-[1px] relative border-solid items-center border-[#D9D9D9] ${platformLinks[i].showDropdown ? "border-[#633CFF]! shadow-[0_0_32px_0_rgba(99,60,255,0.25)]" : ""}`}>
+                        }} className={`flex w-[100%] bg-[#FFFFFF] justify-between p-[12px_16px] rounded-[8px] border-[1px] cursor-pointer relative border-solid items-center border-[#D9D9D9] ${platformLinks[i].showDropdown ? "border-[#633CFF]! shadow-[0_0_32px_0_rgba(99,60,255,0.25)]" : ""}`}>
                             <div className={`flex items-center gap-[12px] ${P1}`}>
                                 <img src={allMenuList[e.selected].img} alt="" />
                                 {allMenuList[e.selected].platform}

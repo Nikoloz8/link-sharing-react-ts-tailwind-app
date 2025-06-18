@@ -22,6 +22,10 @@ const router = createBrowserRouter([
       {
         element: <ProfileDetails />,
         path: "/main/profileDetails"
+      },
+      {
+        element: <Preview />,
+        path: "/main/preview"
       }
     ]
   },
@@ -38,10 +42,6 @@ const router = createBrowserRouter([
         path: "/login"
       }
     ]
-  },
-  {
-    element:<Preview />,
-    path: "/preview"
   }
 ])
 

@@ -20,14 +20,20 @@ type TFunctions = Partial<{
     watch?: UseFormWatch<TForm>
     setError?: UseFormSetError<TForm>
     reset?: UseFormReset<TForm>
-
-    platformLinks: {
+    image?: string
+    platformLinks?: {
         selected: number;
         link: string;
         showDropdown: boolean;
     }[]
 
 }>
+
+type TPlatformLink = {
+    selected: number;
+    link: string;
+    showDropdown: boolean;
+}
 
 type TMainOutletContext = Partial<{
     allMenuList: ({
@@ -71,3 +77,12 @@ type TMainOutletContext = Partial<{
     setImage: React.Dispatch<React.SetStateAction<string | null>>
     image: string
 }>
+
+type TUser = {
+    emailAddress?: string;
+    password?: string;
+    id: number;
+    image:string
+    links:TPlatformLink[]
+    
+}

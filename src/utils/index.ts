@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom"
-import type { TFunctions } from "../types"
+import type { TFunctions, TUser } from "../types"
 
-export default function index({ watch, reset }: TFunctions) {
+export default function index({ watch, reset, platformLinks, image }: TFunctions) {
 
     const navigate = useNavigate()
 
@@ -13,10 +13,15 @@ export default function index({ watch, reset }: TFunctions) {
 
         for (let i = 0; i < parsedStoredUsers.length; i++) {
             if (watch().emailAddress === parsedStoredUsers[i].emailAddress && watch().createPassword === parsedStoredUsers[i].password) {
+                const parsedStoredUser = parsedStoredUsers.find((e: TUser) => e.emailAddress === watch().emailAddress && e.password === watch().createPassword)
+
                 navigate("/main/links")
                 const currentUser = {
-                    emailAddress: watch().emailAddress,
-                    password: watch().createPassword
+                    emailAddress: parsedStoredUser.emailAddress,
+                    password: parsedStoredUser.password,
+                    image: parsedStoredUser?.image,
+                    links: parsedStoredUser?.links,
+                    data: parsedStoredUser?.data
                 }
                 const stringedCurrentUser = JSON.stringify(currentUser)
                 localStorage.setItem("100", stringedCurrentUser)
@@ -39,7 +44,22 @@ export default function index({ watch, reset }: TFunctions) {
 
     }
 
+    const handleSave = () => {
+        const stringedUsers = localStorage.getItem("99")
+        const stringedCurrentUser = localStorage.getItem("100")
+        if (!stringedCurrentUser || !stringedUsers) return
+        const parsedUsers = JSON.parse(stringedUsers)
+        const parsedCurrentUser = JSON.parse(stringedCurrentUser)
+        const currentUserInParsedUsers = parsedUsers.find((e: TUser) => e.emailAddress === parsedCurrentUser.emailAddress && e.password === parsedCurrentUser.password)
+        currentUserInParsedUsers.links = platformLinks
+        currentUserInParsedUsers.data = watch()
+        currentUserInParsedUsers.image = image
+        const filteredParsedUsers = parsedUsers.filter((e: TUser) => e.id !== currentUserInParsedUsers.id)
+        filteredParsedUsers.push(currentUserInParsedUsers)
+        const stringedFilteredUsers = JSON.stringify(filteredParsedUsers)
+        localStorage.setItem("99", stringedFilteredUsers)
+    }
 
 
-    return { handleLogin, handleRegister }
+    return { handleLogin, handleRegister, handleSave }
 }

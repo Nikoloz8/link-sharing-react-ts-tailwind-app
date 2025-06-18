@@ -21,7 +21,7 @@ export default function Header() {
                 </button>
             </div>
             <button onClick={() => {
-                navigate("/preview")
+                navigate("/main/preview")
             }} className={`p-[11px_27px] rounded-[8px] border-[1px] border-solid border-[#633CFF] ${H2} text-[#633CFF]! hover:bg-[#EFEBFF] cursor-pointer`}>
                 Preview
             </button>
