@@ -2,28 +2,15 @@ import { useRef } from "react"
 import { useOutletContext } from "react-router-dom"
 import type { TMainOutletContext } from "../../types"
 import tailwind from "../../styles/tailwind"
+import index from "../../utils"
 
 export default function FileUploadBar() {
 
     const { setImage, image } = useOutletContext<TMainOutletContext>()
     const { P1, H2, P2 } = tailwind()
     const fileInputRef = useRef<HTMLInputElement | null>(null)
-
-    const handleClickOnUpload = (fileInputRef: React.RefObject<HTMLInputElement | null>) => {
-        fileInputRef?.current?.click()
-    }
-
-    const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const file = e.target.files?.[0]
-        if (file) {
-            const reader = new FileReader()
-            reader.onloadend = () => {
-                setImage!(String(reader.result))
-            }
-            reader.readAsDataURL(file)
-        }
-    }
-
+    
+    const { handleClickOnUpload, handleFileChange } = index({ setImage })
 
     return (
         <div className="flex p-[20px] justify-between items-center rounded-[12px] bg-[#FAFAFA] ">

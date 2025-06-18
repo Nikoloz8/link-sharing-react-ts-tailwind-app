@@ -34,9 +34,6 @@ export default function MainLayout() {
         }
     }, [])
 
-
-
-
     const location = useLocation()
 
     return (location.pathname.includes("links") || location.pathname.includes("profileDetails") ?

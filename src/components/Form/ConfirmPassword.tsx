@@ -10,6 +10,6 @@ export default function ConfirmPassword() {
     return (
         <div className="flex flex-col gap-[4px]">
             <label htmlFor="confirmPassword" className={`${P2}`}>Confirm password</label>
-            <input type="text" id="confirmPassword" className={`${inputStyle} bg-[url('/images/icon-password.svg')]`} {...register("confirmPassword")} placeholder="At least 8 characters" />
+            <input type="text" id="confirmPassword" className={`${inputStyle} bg-[url('/images/icon-password.svg')]`} {...register("confirmPassword")} placeholder="At least 8 characters" />   
         </div>)
 }

@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom"
 import type { TFunctions, TUser } from "../types"
 
-export default function index({ watch, reset, platformLinks, image }: TFunctions) {
+export default function index({ watch, reset, platformLinks, image, setImage }: TFunctions) {
 
     const navigate = useNavigate()
 
@@ -56,10 +56,28 @@ export default function index({ watch, reset, platformLinks, image }: TFunctions
         currentUserInParsedUsers.image = image
         const filteredParsedUsers = parsedUsers.filter((e: TUser) => e.id !== currentUserInParsedUsers.id)
         filteredParsedUsers.push(currentUserInParsedUsers)
+        const stringedCurrentUserInParsedUssers = JSON.stringify(currentUserInParsedUsers)
         const stringedFilteredUsers = JSON.stringify(filteredParsedUsers)
         localStorage.setItem("99", stringedFilteredUsers)
+        localStorage.setItem("100", stringedCurrentUserInParsedUssers)
+    }
+
+    const handleClickOnUpload = (fileInputRef: React.RefObject<HTMLInputElement | null>) => {
+        fileInputRef?.current?.click()
+    }
+
+    const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files?.[0]
+        if (file) {
+            const reader = new FileReader()
+            reader.onloadend = () => {
+                setImage!(String(reader.result))
+            }
+            reader.readAsDataURL(file)
+        }
     }
 
 
-    return { handleLogin, handleRegister, handleSave }
+
+    return { handleLogin, handleRegister, handleSave, handleClickOnUpload, handleFileChange }
 }

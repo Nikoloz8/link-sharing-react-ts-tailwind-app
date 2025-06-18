@@ -26,7 +26,7 @@ type TFunctions = Partial<{
         link: string;
         showDropdown: boolean;
     }[]
-
+    setImage: React.Dispatch<React.SetStateAction<string | null>> | undefined
 }>
 
 type TPlatformLink = {
@@ -82,7 +82,7 @@ type TUser = {
     emailAddress?: string;
     password?: string;
     id: number;
-    image:string
-    links:TPlatformLink[]
-    
+    image: string
+    links: TPlatformLink[]
+
 }
