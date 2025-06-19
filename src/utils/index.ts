@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom"
+import { useLocation, useNavigate } from "react-router-dom"
 import type { TFunctions, TUser } from "../types"
 
 export default function index({ watch, reset, platformLinks, image, setImage }: TFunctions) {
@@ -77,7 +77,14 @@ export default function index({ watch, reset, platformLinks, image, setImage }: 
         }
     }
 
+    const handleCopy = async () => {
+        try {
+            await navigator.clipboard.writeText(window.location.href)
+        } catch (e) {
+            console.log(e)
+        }
+    }
 
 
-    return { handleLogin, handleRegister, handleSave, handleClickOnUpload, handleFileChange }
+    return { handleLogin, handleRegister, handleSave, handleClickOnUpload, handleFileChange, handleCopy }
 }

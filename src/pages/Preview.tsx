@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom"
 import tailwind from "../styles/tailwind"
 import type { TMainOutletContext } from "../types"
 import RenderPlatformLinks from "../components/MainLayout/RenderPlatformLinks"
+import index from "../utils"
 
 export default function Preview({ allMenuList, platformLinks, image, watch }: TMainOutletContext) {
 
@@ -9,12 +10,15 @@ export default function Preview({ allMenuList, platformLinks, image, watch }: TM
 
     const navigate = useNavigate()
 
+    const { handleCopy } = index({})
+
+
     return (
         <div className="flex flex-col items-center h-[100%]">
             <div className="w-[100%] rounded-[0_0_32px_32px] h-[40vh] max-sm:bg-[#FFFFFF] max-sm:p-[16px_24px] bg-[#633CFF] p-[24px]">
                 <header className="flex bg-[#FFFFFF] max-sm:p-0 items-center rounded-[12px] justify-between p-[16px]">
                     <button onClick={() => navigate("/main/links")} className={`p-[11px_27px] border-[1px] cursor-pointer border-solid border-[#633CFF] rounded-[8px] ${H2} text-[#633CFF]!`}>Back to Editor</button>
-                    <button className={`p-[11px_27px] bg-[rgba(99,60,255)] rounded-[8px] ${H2} text-[#FFFFFF]`}>
+                    <button onClick={handleCopy} className={`p-[11px_27px] bg-[rgba(99,60,255)] rounded-[8px] ${H2} text-[#FFFFFF] cursor-pointer`}>
                         Share Link
                     </button>
                 </header>
