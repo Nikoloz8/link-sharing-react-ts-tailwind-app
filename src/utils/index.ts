@@ -1,4 +1,4 @@
-import { useLocation, useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import type { TFunctions, TUser } from "../types"
 
 export default function index({ watch, reset, platformLinks, image, setImage }: TFunctions) {
